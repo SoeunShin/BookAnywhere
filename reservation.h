@@ -1,3 +1,10 @@
+typedef struct{ 
+  char name[20]; 
+  char in;
+  char out;
+  int seat; 
+} USER;
+
 int addUser(User *u); //사용자 계정 만들기
 void timeRemain(User u); //잔여시간 출력
 void readHistory(User u);  //file에 저장된 히스토리 읽기
