@@ -3,7 +3,7 @@ typedef struct{
   char in;
   char out;
   int seat; 
-} USER;
+} User;
 
 int addUser(User *u); //사용자 계정 만들기
 void timeRemain(User u); //잔여시간 출력
