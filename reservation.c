@@ -16,3 +16,5 @@ void searchEmpty(User *u, int cnt){ // 비어있는 자리 검색
 void saveFile(User *u, int cnt){ // 파일 저장
 
 }
+
+
