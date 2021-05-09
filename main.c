@@ -10,7 +10,6 @@ int main(void){
         if (menu == 0) break; // 0: 종료
         if (menu == 1){ // 1: 사용자 계정 생성
             count += addUser(&ulist[index]);
-            index++;
         }
         else if (menu == 2){ // 2: 입퇴실 신청 
             int no = selectNo(ulist, index);
