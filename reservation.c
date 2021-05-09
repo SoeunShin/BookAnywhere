@@ -43,7 +43,7 @@ int selectMenu(){
     printf("5. 사용시간 조회\n");
     printf("6. 예약 수정\n");
     printf("0. 종료\n\n");
-    printf("=> 원하는 메뉴는? ");
+    printf("=> Select a menu: ");
     scanf("%d", &menu);
     return menu;
 }
