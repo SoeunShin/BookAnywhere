@@ -9,7 +9,7 @@ int addUser(User *u); // 사용자 계정 만들기
 void usingTime(User u); // 사용시간 출력
 void readHistory(User u); // file에 저장된 히스토리 읽기
 int updateSeat(User *u); // 자리 상태 업데이트
-void searchUser(User *u); // 사용자이용정보 검색
+void searchUser(User *u); // 사용자 이용 정보 검색
 void readUser(User u); // 사용자 목록 조회
 int deleteUser(User *u); // 사용자 목록 삭제
 void checkinout(User *u); //입퇴실 처리
