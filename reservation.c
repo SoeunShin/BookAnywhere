@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <time.h>
-#include "oss_team.h"
+#include "reservation.h"
 
 void readUser(User u){  // 사용자 목록 조회
-        printf("%30s%20s%20s%10d\n", u.id, u.in, u.out, u.seat);
+        printf("%30s%20d%20d%10d\n", u.id, u.in, u.out, u.seat);
 }
 int deleteUser(User *u){ // 사용자 목록 삭제
         u->in = "";
