@@ -6,6 +6,7 @@ typedef struct{
 } User;
 
 int addUser(User *u); //사용자 계정 만들기
+void checkinout(User *u);  //입퇴실 처리
 void timeRemain(User u); //잔여시간 출력
 void readHistory(User u);  //file에 저장된 히스토리 읽기
 int updateSeat(User *u);  //자리 상태 업데이트
