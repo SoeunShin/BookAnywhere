@@ -1,5 +1,5 @@
 typedef struct{ 
-  char name[20]; 
+  char id[20]; 
   int in;
   int out;
   int seat; 
