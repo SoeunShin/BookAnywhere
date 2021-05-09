@@ -10,7 +10,7 @@ int deleteUser(User *u){ // 사용자 목록 삭제
         u->out = "";
         u->seat = -1;
 }
-void checkinout(User *u){  //입퇴실 처리
+void checkinout(User *u){ // 입퇴실 처리
         char answer;
         time_t checkin;
         time_t checkout;
