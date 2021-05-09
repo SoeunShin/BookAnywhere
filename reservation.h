@@ -1,7 +1,7 @@
 typedef struct{ 
   char name[20]; 
-  char in;
-  char out;
+  int in;
+  int out;
   int seat; 
 } User;
 
