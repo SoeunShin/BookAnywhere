@@ -86,3 +86,7 @@ void usingtime(User u){
     printf("using time: %dh %dm %ds", usingHour, usingMin, usingSec);
 }
 
+/*
+void readHistory(User u); // file에 저장된 히스토리 읽기
+void searchUser(User *u); // 사용자 검색
+*/
