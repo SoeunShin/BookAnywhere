@@ -43,7 +43,7 @@ void checkinout(User *u){  //입퇴실 처리
         u->out = checkout;
     }
     else{
-        printf("Cancelled!\n");
+        printf("=> Cancelled!\n");
     }
 }
 void listUser(User *u){ // 전체 목록 출력
@@ -100,7 +100,7 @@ int addUser(User *u){
 void updateSeat(User *u){
     printf("Choose your seat(1-20): " );
     scanf("%d", &u->seat);
-    printf("=> 수정성공!\n");
+    printf("=> Updated!\n");
 }
 
 void usingTime(User u){
