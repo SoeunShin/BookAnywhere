@@ -78,36 +78,31 @@ int addUser(User *u){
     printf("Choose your seat(1-20): " );
     scanf("%d", &u->seat);
 
-    printf("-------------------------\n");
-    printf("Created!\nYour ID is %s and seat is number %d.", u->id, u->seat);
+    printf("------------------Created!-----------------\n");
+    printf("Your ID is \"%s\" and seat is number \"%d\"\n", u->id, u->seat);
     return 1;
 }
 
-int updateSeat(User *u){
-    printf("Input a user ID: ");
-    //ID 있는지 확인 read
-    scanf("%s", u->id);
+void updateSeat(User *u){
     printf("Choose your seat(1-20): " );
     scanf("%d", &u->seat);
     printf("=> 수정성공!\n");
-    return 1;
 }
 
-void usingtime(User u){
+void usingTime(User u){
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
 
-    printf("Input a user ID: ");
-    //ID 있는지 확인 read
-    scanf("%s", u.id);
     int usingTime;
     int presentSec=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
 
     if(u.in!=0 && u.out==0){ //입실처리만 ,사용중
         usingTime = presentSec - u.in;
+        printf("You're using the seats number %d now.\n",u.seat);
     }
     else if(u.in==0 && u.out==0){  //입퇴실 둘다 안했을때, 사용중이 아닐때(계정만 존재)
-        printf("You're not using any seats now.");
+        printf("You're not using any seats now.\n");
+        
     }
     else {  //입퇴실처리 모두 다 됐을때, 사용중이 아닐때 (입실안했는데 퇴실처리할 수 없도록 ckeckinout함수에서 제어)
         usingTime = u.out - u.in;
@@ -115,7 +110,7 @@ void usingtime(User u){
     int usingHour= usingTime/3600;
     int usingMin= (usingTime-3600*usingHour)/60;
     int usingSec= usingTime-3600*usingHour-60*usingMin;
-    printf("using time: %dh %dm %ds", usingHour, usingMin, usingSec);
+    printf("Your using time: %dh %dm %ds\n", usingHour, usingMin, usingSec);
 }
 
 /*
