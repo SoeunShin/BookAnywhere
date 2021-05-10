@@ -10,7 +10,7 @@ void readUser(User u){  // 사용자 조회
 
     int outHour= u.out/3600;
     int outMin= (u.out-3600*outHour)/60;
-    int outSec= u.in-3600*outHour-60*outMin;
+    int outSec= u.out-3600*outHour-60*outMin;
 
     if(strcmp(u.id, "")!=0){
         printf("\t%s\t\t%d:%d:%d\t\t%d:%d:%d\t\t%d\n", u.id, InHour,InMin,InSec,outHour,outMin, outSec,u.seat);
