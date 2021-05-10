@@ -36,13 +36,13 @@ int main(void){
                 continue;
             }
             int delok;
-            printf("Do you want to delete it?(Y: Yes) ");
-            scanf("%c", delok);
-            if (delok == 'Y'){
+            printf("Do you want to delete it?(Yes: 1) ");
+            scanf("%d", &delok);
+            if (delok == 1){
                 deleteUser(&ulist[no-1]);
             }
             else{
-                pirntf("Cancelled!\n");
+                printf("Cancelled!\n");
                 continue;
             }
         }
