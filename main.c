@@ -50,10 +50,30 @@ int main(void){
             }
         }
         else if (menu == 5){ // 5: 사용시간 조회
-
+            int i;
+            char getname[20];
+            printf("Input a user ID: ");
+            scanf("%s", getname);
+            for (i=0; i<30; i++){
+                if(strcmp(getname, ulist[i].id)==0){
+                    usingTime(ulist[i]);
+                    break;
+                }
+            }
+            if(i==30) printf("There is no matched user ID\n");
         }
         else if (menu == 6){ // 6: 예약 수정
-
+            int i;
+            char getname[20];
+            printf("Input a user ID: ");
+            scanf("%s", getname);
+            for (int i=0; i<30; i++){
+                if(strcmp(getname, ulist[i].id)==0){
+                    updateSeat(&ulist[i]);
+                    break;
+                }
+            }
+            if(i==30) printf("There is no matched user ID\n");
         }
     }
     printf("EXIT\n");
