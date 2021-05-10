@@ -1,11 +1,13 @@
 #include <stdio.h>
-#include "reservation.h"
+#include <string.h>
+#include "reservation.c"
 
 int main(void){
     User ulist[30];
     int index = 0, cnt = 0, menu;
 
     for (int i=0; i<30; i++){
+        strcpy(ulist[i].id, "");
         ulist[i].in = 0;
         ulist[i].out = 0;
         ulist[i].seat = 0;
@@ -21,21 +23,18 @@ int main(void){
         else if (menu == 2){ // 2: 입퇴실 신청 
             int no = selectNo(ulist);
             if (no == 0){
-                printf("Cancelled!\n");
+                printf("=> Cancelled!\n");
                 continue;
             }
             checkinout(&ulist[no-1]);
         }
         else if (menu == 3){ // 3: 현재 사용자 전체 목록 조회
-            for (int i=0; i<30; i++){
-                printf("%d's user: ",i+1);
-                readUser(ulist[i]);
-            }
+            listUser(ulist);
         }
         else if (menu == 4){  // 4: 사용자 목록 삭제
             int no = selectNo(ulist);
             if (no == 0){
-                printf("Cancelled!\n");
+                printf("=> Cancelled!\n");
                 continue;
             }
             int delok;
@@ -43,9 +42,10 @@ int main(void){
             scanf("%d", &delok);
             if (delok == 1){
                 deleteUser(&ulist[no-1]);
+                printf("=> Deleted!\n");
             }
             else{
-                printf("Cancelled!\n");
+                printf("=> Cancelled!\n");
                 continue;
             }
         }
@@ -76,6 +76,6 @@ int main(void){
             if(i==30) printf("There is no matched user ID\n");
         }
     }
-    printf("EXIT\n");
+    printf("=> EXIT\n");
     return 0;
 }
