@@ -94,7 +94,7 @@ void usingtime(User u){
     if(u.in!=0 && u.out==0){ //입실처리만 ,사용중
         usingTime = presentSec - u.in;
     }
-    else if(u.in==0 u.out==0){  //입퇴실 둘다 안했을때, 사용중이 아닐때(계정만 존재)
+    else if(u.in==0 && u.out==0){  //입퇴실 둘다 안했을때, 사용중이 아닐때(계정만 존재)
         printf("You're not using any seats now.");
     }
     else {  //입퇴실처리 모두 다 됐을때, 사용중이 아닐때 (입실안했는데 퇴실처리할 수 없도록 ckeckinout함수에서 제어)
