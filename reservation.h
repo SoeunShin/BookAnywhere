@@ -6,14 +6,15 @@ typedef struct{
 } User;
 
 int addUser(User *u); // 사용자 계정 생성
-void usingTime(User u); // 사용시간 출력
-void readHistory(User u); // file에 저장된 히스토리 읽기
-int updateSeat(User *u); // 예약 수정
-void searchUser(User *u); // 사용자 검색
-void readUser(User u); // 사용자 목록 조회
+void timeRemain(User u); // 잔여시간 출력
+void readHistory(User u);  // file에 저장된 히스토리 읽기
+int updateSeat(User *u);  // 자리 상태 업데이트
+void searchUser(User *u);  // 사용자 이용 정보 검색
+void readUser(User u); // 사용자 한 명 목록 출력
 int deleteUser(User *u); // 사용자 목록 삭제
-void checkinout(User *u); // 입퇴실 처리
-int selectNo(); // 번호 선택 
+void checkinout(User *u);  // 입퇴실 처리
+int selectNo(User u[]); // 번호 선택 
+int listUser(User *u); // 전체 목록 출력
 void searchUsing(User *u, int cnt); // 사용중인 자리 검색
 void searchEmpty(User *u, int cnt); // 비어있는 자리 검색
 int selectMenu(); // 메뉴 선택
