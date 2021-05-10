@@ -27,8 +27,20 @@ void checkinout(User *u){  //입퇴실 처리
             printf("Cancelled!\n");
     }
 }
-int selectNo(){
+int listUser(User *u){ // 전체 목록 출력
+    printf("\nNo\tCheck in\tCheck out\tSeat No\n");
+    printf("*******************************************************\n");
+    for (int i=0; i<30; i++){
+        if(u[i].seat == -1){
+            continue;
+        }
+        printf("%d  ", i+1);
+        readUser(u[i]);
+    }
+}
+int selectNo(User u[]){
     int no;
+    listUser(u);
     printf("Select a number(Cancel:0): ");
     scanf("%d", &no);
     return no;
