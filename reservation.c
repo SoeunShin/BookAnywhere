@@ -4,8 +4,20 @@
 #include "reservation.h"
 
 void readUser(User u){  // 사용자 조회
-    printf("\t%s\t\t%d\t\t%d\t\t%d\n", u.id, u.in, u.out, u.seat);
+    int InHour= u.in/3600;
+    int InMin= (u.in-3600*InHour)/60;
+    int InSec= u.in-3600*InHour-60*InMin;
+
+    int outHour= u.out/3600;
+    int outMin= (u.out-3600*outHour)/60;
+    int outSec= u.in-3600*outHour-60*outMin;
+
+    if(strcmp(u.id, "")!=0){
+        printf("\t%s\t\t%d:%d:%d\t\t%d:%d:%d\t\t%d\n", u.id, InHour,InMin,InSec,outHour,outMin, outSec,u.seat);
+    }
+    else printf("\t%s\t\t%d\t\t%d\t\t%d\n", u.id, u.in, u.out, u.seat);
 }
+
 int deleteUser(User *u){ // 사용자 목록 삭제
     strcpy(u->id, "");
     u->in = 0;
@@ -13,21 +25,25 @@ int deleteUser(User *u){ // 사용자 목록 삭제
     u->seat = 0;
     return 1;
 }
+
 void checkinout(User *u){  //입퇴실 처리
-    int answer;
-    time_t checkin;
-    time_t checkout;
+    int answer, checkin, checkout;
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    
     printf("Please enter 1(In) or 2(Out): ");
     scanf("%d", &answer);
     
     if (answer == 1){
-            u->in = time(&checkin);
+        checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+        u->in = checkin;
     }
     else if (answer == 2){
-            u->out = time(&checkout);
+        checkout=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+        u->out = checkout;
     }
     else{
-            printf("Cancelled!\n");
+        printf("Cancelled!\n");
     }
 }
 void listUser(User *u){ // 전체 목록 출력
@@ -45,9 +61,10 @@ int selectNo(User u[]){
     scanf("%d", &no);
     return no;
 }
+
 int selectMenu(){
     int menu;
-    printf("\n\n*** Select a menu ***\n");
+    printf("\n*** Select a menu ***\n");
     printf("1. 사용자 계정 생성\n");
     printf("2. 입퇴실 신청\n");
     printf("3. 사용자 목록 조회\n");
@@ -61,13 +78,10 @@ int selectMenu(){
 }
 /*
 void searchUsing(User *u, int cnt){ // 사용중인 자리 검색
-
 }
 void searchEmpty(User *u, int cnt){ // 비어있는 자리 검색
-
 }  
 void saveFile(User *u, int cnt){ // 파일 저장
-
 }
 */
 
@@ -86,7 +100,7 @@ int addUser(User *u){
 void updateSeat(User *u){
     printf("Choose your seat(1-20): " );
     scanf("%d", &u->seat);
-    printf("=> Updated!\n");
+    printf("=> 수정성공!\n");
 }
 
 void usingTime(User u){
@@ -95,9 +109,10 @@ void usingTime(User u){
 
     int usingTime;
     int presentSec=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-
+    printf("presentSec: %d\n", presentSec);
     if(u.in!=0 && u.out==0){ //입실처리만 ,사용중
         usingTime = presentSec - u.in;
+        printf("usingTime: %d\nu.in Time: %d\n",usingTime, u.in);
         printf("You're using the seats number %d now.\n",u.seat);
     }
     else if(u.in==0 && u.out==0){  //입퇴실 둘다 안했을때, 사용중이 아닐때(계정만 존재)
