@@ -1,39 +1,39 @@
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 #include "reservation.h"
 
-void readUser(User u){  // 사용자 목록 조회
-    printf("%30s%20d%20d%10d\n", u.id, u.in, u.out, u.seat);
+void readUser(User u){  // 사용자 조회
+    printf("\t%s\t\t%d\t\t%d\t\t%d\n", u.id, u.in, u.out, u.seat);
 }
 int deleteUser(User *u){ // 사용자 목록 삭제
-    u->in = "";
-    u->out = "";
-    u->seat = -1;
+    strcpy(u->id, "");
+    u->in = 0;
+    u->out = 0;
+    u->seat = 0;
+    return 1;
 }
 void checkinout(User *u){  //입퇴실 처리
-    char answer;
+    int answer;
     time_t checkin;
     time_t checkout;
-    printf("Please enter I(In) or O(Out): ");
-    scanf("%c", answer);
+    printf("Please enter 1(In) or 2(Out): ");
+    scanf("%d", &answer);
     
-    if (answer == 'I'){
-            time(&checkin);
+    if (answer == 1){
+            u->in = time(&checkin);
     }
-    if (answer == 'O'){
-            time(&checkout);
+    else if (answer == 2){
+            u->out = time(&checkout);
     }
     else{
             printf("Cancelled!\n");
     }
 }
-int listUser(User *u){ // 전체 목록 출력
-    printf("\nNo\tCheck in\tCheck out\tSeat No\n");
-    printf("*******************************************************\n");
+void listUser(User *u){ // 전체 목록 출력
+    printf("\nNo\tID\t\tCheck in\tCheck out\tSeat No\n");
+    printf("****************************************************************\n");
     for (int i=0; i<30; i++){
-        if(u[i].seat == -1){
-            continue;
-        }
         printf("%d  ", i+1);
         readUser(u[i]);
     }
@@ -47,11 +47,11 @@ int selectNo(User u[]){
 }
 int selectMenu(){
     int menu;
-    printf("\n*** Select a menu ***\n");
+    printf("\n\n*** Select a menu ***\n");
     printf("1. 사용자 계정 생성\n");
     printf("2. 입퇴실 신청\n");
     printf("3. 사용자 목록 조회\n");
-    printf("4. 사용자 목록 삭제");
+    printf("4. 사용자 목록 삭제\n");
     printf("5. 사용시간 조회\n");
     printf("6. 예약 수정\n");
     printf("0. 종료\n\n");
@@ -78,8 +78,8 @@ int addUser(User *u){
     printf("Choose your seat(1-20): " );
     scanf("%d", &u->seat);
 
-    printf("-------------------------");
-    printf("Created!\nYour ID is %d and seat is number %d.", u->id, u->seat);
+    printf("-------------------------\n");
+    printf("Created!\nYour ID is %s and seat is number %d.", u->id, u->seat);
     return 1;
 }
 
