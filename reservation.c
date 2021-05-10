@@ -109,7 +109,6 @@ void usingTime(User u){
 
     int usingTime;
     int presentSec=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-    printf("presentSec: %d\n", presentSec);
     if(u.in!=0 && u.out==0){ //입실처리만 ,사용중
         usingTime = presentSec - u.in;
         printf("usingTime: %d\nu.in Time: %d\n",usingTime, u.in);
