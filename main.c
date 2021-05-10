@@ -27,7 +27,10 @@ int main(void){
             checkinout(&ulist[no-1]);
         }
         else if (menu == 3){ // 3: 현재 사용자 전체 목록 조회
-            listUser(ulist);
+            for (int i=0; i<30; i++){
+                printf("%d's user: ",i+1);
+                readUser(ulist[i]);
+            }
         }
         else if (menu == 4){  // 4: 사용자 목록 삭제
             int no = selectNo(ulist);
