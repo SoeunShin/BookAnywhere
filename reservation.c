@@ -103,7 +103,6 @@ void usingTime(User u){
     int presentSec=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
     if(u.in!=0 && u.out==0){ //입실처리만 ,사용중
         usingTime = presentSec - u.in;
-        printf("usingTime: %d\nu.in Time: %d\n",usingTime, u.in);
         printf("You're using the seats number %d now.\n",u.seat);
     }
     else if(u.in==0 && u.out==0){  //입퇴실 둘다 안했을때, 사용중이 아닐때(계정만 존재)
