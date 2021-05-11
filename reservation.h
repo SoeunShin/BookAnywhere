@@ -20,3 +20,4 @@ void searchUsing(User *u, int cnt); // 사용중인 자리 검색
 void searchEmpty(User *u, int cnt); // 비어있는 자리 검색
 int selectMenu(); // 메뉴 선택
 void saveFile(User *u, int cnt); // 파일 저장
+int checkSeat(User *u); //자리 상태 확인
