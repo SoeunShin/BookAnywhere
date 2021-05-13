@@ -118,10 +118,8 @@ void usingTime(User u){
     printf("Your using time: %dh %dm %ds\n", usingHour, usingMin, usingSec);
 }
 
-/*
 void readHistory(User u); // file에 저장된 히스토리 읽기
 void searchUser(User *u); // 사용자 검색
 void searchUsing(User *u, int cnt); // 사용중인 자리 검색
 void searchEmpty(User *u, int cnt); // 비어있는 자리 검색
 void saveFile(User *u, int cnt); // 파일 저장
-*/
