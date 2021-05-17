@@ -71,6 +71,10 @@ int selectMenu(){
     printf("4. 사용자 목록 삭제\n");
     printf("5. 사용시간 조회\n");
     printf("6. 예약 수정\n");
+    printf("7. 사용자 검색\n");
+    printf("8. 사용중인 자리 검색\n");
+    printf("9. 비어있는 자리 검색\n");
+    printf("10. 파일 저장\n");
     printf("0. 종료\n\n");
     printf("=> Select a menu: ");
     scanf("%d", &menu);
