@@ -82,14 +82,31 @@ int selectMenu(){
 }
 
 int addUser(User *u){
+    int ck=0, i;
     printf("Input a user ID: ");
     scanf("%s", u->id);
-    //searchEmpty함수 호출하여 빈자리 목록
     printf("Choose your seat(1-20): " );
     scanf("%d", &u->seat);
 
-    printf("------------------Created!-----------------\n");
-    printf("Your ID is \"%s\" and seat is number \"%d\"\n", u->id, u->seat);
+    while(!(0< u->seat && u->seat <=20)){ //확인 함수 짬뽕
+        if(!(0< u->seat && u->seat <=20)){
+            printf("Invalid seat. Try again\n");
+            printf("Choose your seat(1-20): " );
+            scanf("%d", &u->seat);
+        }
+    }
+    while(checkSeat(U, u->seat)==0){  //여기서도 입력 범위 확인후 
+        if(checkSeat(U, u->seat)==0){
+            printf("Someone is using the seat number %d.\nChoose again\n\n", u->seat);
+            printf("Choose your seat(1-20): " );
+            scanf("%d", &u->seat);
+        }
+        else{
+            printf("------------------Created!-----------------\n");
+            printf("Your ID is \"%s\" and seat is number \"%d\"\n", u->id, u->seat);
+        }
+
+    }
     return 1;
 }
 
@@ -113,7 +130,7 @@ void usingTime(User u){
         printf("You're not using any seats now.\n");
         
     }
-    else {  //입퇴실처리 모두 다 됐을때, 사용중이 아닐때 (입실안했는데 퇴실처리할 수 없도록 ckeckinout함수에서 제어)
+    else {  //입퇴실처리 모두 다 됐을때, 사용중이 아닐때
         usingTime = u.out - u.in;
     }
     int usingHour= usingTime/3600;
@@ -154,6 +171,18 @@ void searchUser(User *u, int cnt){ // 사용자 검색
     }
     if(scnt == 0) printf("-> no result\n");
 }
+int checkSeat(User u[], int select){  //자리 사용여부 확인, 자리가 겹치지 않을때 1, 겹칠때 0
+    int ck=0;
+    for(int i=0; i<30; i++){
+            if(u[i].seat == select){
+                ck ++;
+            }
+            else continue;
+    }
+    if(ck == 1) return 1;
+    else return 0;
+}
+
 void searchUsing(User *u, int cnt){ // 사용중인 자리 조회
     int ucnt = 0;
 
