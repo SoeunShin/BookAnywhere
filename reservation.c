@@ -96,19 +96,21 @@ int addUser(User *u, User *U){
     printf("Choose your seat(1-30): " );
     scanf("%d", &u->seat);
 
-    while(!(0< u->seat && u->seat <=30)){ //확인 함수 짬뽕
+    while(1){ 
         if(!(0< u->seat && u->seat <=30)){
             printf("Invalid seat. Try again\n");
             printf("Choose your seat(1-30): " );
             scanf("%d", &u->seat);
         }
+        else break;
     }
-    while(checkSeat(U, u->seat)==0){  //여기서도 입력 범위 확인후 
+    while(1){  
         if(checkSeat(U, u->seat)==0){
             printf("Someone is using the seat number %d.\nChoose again\n\n", u->seat);
             printf("Choose your seat(1-30): " );
             scanf("%d", &u->seat);
         }
+        else break;
     }
     printf("------------------Created!-----------------\n");
     printf("Your ID is \"%s\" and seat is number \"%d\"\n", u->id, u->seat);
@@ -118,13 +120,22 @@ int addUser(User *u, User *U){
 void updateSeat(User *u, User *U){
     printf("Choose your seat(1-30): " );
     scanf("%d", &u->seat);
-
-    while(checkSeat(U, u->seat)==0){
+    
+    while(1){ 
+        if(!(0< u->seat && u->seat <=30)){
+            printf("Invalid seat. Try again\n");
+            printf("Choose your seat(1-30): " );
+            scanf("%d", &u->seat);
+        }
+        else break;
+    }
+    while(1){
         if(checkSeat(U, u->seat)==0){
             printf("Someone is using the seat number %d.\nChoose again\n\n", u->seat);
             printf("Choose your seat(1-30): " );
             scanf("%d", &u->seat);
         }
+        else break;
     }
     printf("------------------Updated!-----------------\n");
     printf("%s's seat number is changed to \"%d\"\n.", u->id, u->seat);
