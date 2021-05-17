@@ -8,7 +8,7 @@ typedef struct{
 int addUser(User *u, User *U); // 사용자 계정 생성
 void usingTime(User u); // 사용시간 출력
 void timeRemain(User u); // 잔여시간 출력
-void readHistory(User *u);  // 파일에 저장된 히스토리 읽기
+int readHistory(User *u);  // 파일에 저장된 히스토리 읽기
 void updateSeat(User *u, User *U);  //자리상태 
 void searchUser(User *u, int cnt);  // 사용자 이용 정보 검색
 void readUser(User u); // 사용자 한 명 목록 출력
