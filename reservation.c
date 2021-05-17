@@ -205,4 +205,3 @@ void searchUser(User *u, int cnt){ // 사용자 검색
 }
 
 void saveFile(User *u, int cnt){ // 파일 저장
-    
