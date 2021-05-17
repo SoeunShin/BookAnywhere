@@ -5,7 +5,7 @@ typedef struct{
   int seat; 
 } User;
 
-int addUser(User *u); // 사용자 계정 생성
+int addUser(User *u, User *U); // 사용자 계정 생성
 void usingTime(User u); // 사용시간 출력
 void timeRemain(User u); // 잔여시간 출력
 void readHistory(User *u);  // 파일에 저장된 히스토리 읽기
