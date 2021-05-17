@@ -138,8 +138,8 @@ void usingTime(User u){
     int usingSec= usingTime-3600*usingHour-60*usingMin;
     printf("Your using time: %dh %dm %ds\n", usingHour, usingMin, usingSec);
 }
-int readHistory(User *u, int cnt){ // file에 저장된 히스토리 읽기
-    int cnt=0, i=0;
+int readHistory(User *u){ // file에 저장된 히스토리 읽기
+    int i=0;
     FILE *fp;
     fp=fopen("userHistory.txt","rt");
     for(i=0; i<30; i++){
