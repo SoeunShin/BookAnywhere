@@ -169,5 +169,40 @@ void searchEmpty(User *u, int cnt){ // 비어있는 자리 검색
         printf("=> There are no seats available.\n");
     }
 }
+
+int readHistory(User *u, int cnt){ // file에 저장된 히스토리 읽기
+    int cnt=0, i=0;
+    FILE *fp;
+    fp=fopen("userHistory.txt","rt");
+    for(i=0; i<30; i++){
+        fscanf(fp, "%s", u[i].id);
+        if(feof(fp)) break;
+        fscanf(fp, "%d", &u[i].in);
+        fscanf(fp, "%d", &u[i].out);
+        fscanf(fp, "%d", &u[i].seat);
+    }
+    fclose(fp);
+    printf("->Reading History successed!\n");
+    return i;
+}
+void searchUser(User *u, int cnt){ // 사용자 검색
+    int scnt = 0;
+    char search[20];
+
+    printf("Input a name you want to search: ");
+    scanf("%s", search);
+
+    printf("\nNo\tID\t\tCheck in\tCheck out\tSeat No\n");
+    printf("****************************************************************\n");
+    for (int i=0; i<cnt; i++){
+        if(u[i].in == 0) continue;
+        if(strstr(u[i].id, search)){
+            readUser(u[i]);
+            scnt++;
+        }
+    }
+    if(scnt == 0) printf("-> no result\n");
+}
+
 void saveFile(User *u, int cnt){ // 파일 저장
     
