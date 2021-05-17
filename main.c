@@ -69,7 +69,7 @@ int main(void){
             scanf("%s", getname);
             for (int i=0; i<30; i++){
                 if(strcmp(getname, ulist[i].id)==0){
-                    updateSeat(&ulist[i]);
+                    updateSeat(&ulist[i],ulist);
                     break;
                 }
             }
