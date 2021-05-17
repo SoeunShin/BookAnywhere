@@ -85,7 +85,7 @@ int addUser(User *u){
     int ck=0, i;
     printf("Input a user ID: ");
     scanf("%s", u->id);
-    printf("Choose your seat(1-20): " );
+    printf("Choose your seat(1-30): " );
     scanf("%d", &u->seat);
 
     while(!(0< u->seat && u->seat <=20)){ //확인 함수 짬뽕
