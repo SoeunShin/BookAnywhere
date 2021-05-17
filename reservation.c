@@ -126,7 +126,6 @@ void readHistory(User u); // file에 저장된 히스토리 읽기
 void searchUser(User *u); // 사용자 검색
 void searchUsing(User *u, int cnt){ // 사용중인 자리 검색
     int ucnt = 0;
-    int useat;
 
     printf("This is a list of seats in use.\n");
     printf("\nNo\tID\t\tCheck in\tCheck out\tSeat No\n");
@@ -135,7 +134,7 @@ void searchUsing(User *u, int cnt){ // 사용중인 자리 검색
         if(u[i].seat == 0) continue;
         else{
             printf("%d", i+1);
-            readProduct(u[i]);
+            readUser(u[i]);
             ucnt++;
         }
     }
@@ -143,65 +142,34 @@ void searchUsing(User *u, int cnt){ // 사용중인 자리 검색
         printf("=> All seats are empty!\n");
 }
 void searchEmpty(User *u, int cnt){ // 비어있는 자리 검색
-    int ucnt = 0;
-    int useat;
-    int usingseat[cnt];
     int emptyseat[30-cnt];
-    // 사용중인 자리 배열
-    for(int i=0; i<cnt; i++){
-        usingseat[i] = u[i].seat;
-    }
-    // 빈 자리 배열
-    for(int i=1; i<=30; i++){
-        for(int j=0; j<cnt; j++){
-            if(i != usingseat[j]){
-                emptyseat[j] = i;
-                ucnt++;
-            }
-        }
-    }
+    int usingseat[cnt];
+    printf("\nNumber of empty seats: %d\n", 30-cnt);
     // 빈 자리 출력
     printf("This is a list of empty seats.\n");
-    for(int i=0; i<num(emptyseat); i++){
-        printf("%d\n", emptyseat[i]);
+    int k = 0, flag = 0;
+    for(int i=0; i<30; i++){
+        for(int j=0; j<cnt; j++){
+            if(i+1 == u[j].seat) flag = 1;
+            if(flag == 1) break;
+        }
+        emptyseat[k] = i+1;
+        if(flag == 0) k++;
+        flag = 0;
     }
-    if(ucnt==0){
+    for(int i=0; i<30-cnt; i++){
+        printf("seat %d\n", emptyseat[i]);
+    }
+    if(cnt==30){
         printf("=> There are no seats available.\n");
     }
 }
-
-int readHistory(User *u, int cnt){ // file에 저장된 히스토리 읽기
-    int cnt=0, i=0;
+void saveFile(User *u, int cnt){ // 파일 저장
     FILE *fp;
-    fp=fopen("userHistory.txt","rt");
-    for(i=0; i<30; i++){
-        fscanf(fp, "%s", u[i].id);
-        if(feof(fp)) break;
-        fscanf(fp, "%d", &u[i].in);
-        fscanf(fp, "%d", &u[i].out);
-        fscanf(fp, "%d", &u[i].seat);
+    fp = fopen("userHistory.txt", "w");
+    for(int i=0; i<30; i++){
+        fprintf("\t%s\t\t%d\t\t%d\t\t%d\n", u[i].id, u[i].in, u[i].out, u[i].seat);
     }
     fclose(fp);
-    printf("->Reading History successed!\n");
-    return i;
+    printf("=> Saved!\n");
 }
-void searchUser(User *u, int cnt){ // 사용자 검색
-    int scnt = 0;
-    char search[20];
-
-    printf("Input a name you want to search: ");
-    scanf("%s", search);
-
-    printf("\nNo\tID\t\tCheck in\tCheck out\tSeat No\n");
-    printf("****************************************************************\n");
-    for (int i=0; i<cnt; i++){
-        if(u[i].in == 0) continue;
-        if(strstr(u[i].id, search)){
-            readUser(u[i]);
-            scnt++;
-        }
-    }
-    if(scnt == 0) printf("-> no result\n");
-}
-
-void saveFile(User *u, int cnt){ // 파일 저장
