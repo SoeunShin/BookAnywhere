@@ -31,19 +31,28 @@ void checkinout(User *u){  //입퇴실 처리
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     
-    printf("Please enter 1(In) or 2(Out): ");
-    scanf("%d", &answer);
+    while(1){
+        printf("Please enter 1(In) or 2(Out): ");
+        scanf("%d", &answer);
     
-    if (answer == 1){
-        checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-        u->in = checkin;
-    }
-    else if (answer == 2){
-        checkout=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-        u->out = checkout;
-    }
-    else{
-        printf("=> Cancelled!\n");
+        if (answer == 1){
+            checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+            u->in = checkin;
+            break;
+        }
+        else if (answer == 2){
+            if(u->in == 0) {
+                printf("You can't check out without check in\nCheck in First!\n\n");
+            }
+            else{
+            checkout=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+            u->out = checkout;
+            }
+        }
+        else{
+            printf("=> Cancelled!\n");
+            break;
+        }
     }
 }
 void listUser(User *u){ // 전체 목록 출력
