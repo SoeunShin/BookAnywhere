@@ -78,6 +78,15 @@ int main(void){
         else if (menu == 7){  // 7. 이름으로 검색
             searchUser(ulist, count);
         }
+        else if (menu == 8){ // 사용중인 자리 조회
+            searchUsing(ulist, index);
+        }
+        else if (menu == 9){ // 빈 자리 조회
+            searchEmpty(ulist, index);
+        }
+        else if (menu == 10){ // 파일 저장 
+            saveFile(ulist);
+        }
     }
     printf("=> EXIT\n");
     return 0;
