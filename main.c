@@ -75,6 +75,9 @@ int main(void){
             }
             if(i==30) printf("There is no matched user ID\n");
         }
+        else if (menu == 7){  // 7. 이름으로 검색
+            searchUser(ulist, count);
+        }
     }
     printf("=> EXIT\n");
     return 0;
