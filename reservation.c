@@ -223,7 +223,7 @@ void searchEmpty(User *u, int cnt){ // 빈 자리 조회
         printf("=> There are no seats available.\n");
     }
 }
-void saveFile(User *u, int cnt){ // 파일 저장
+void saveFile(User *u){ // 파일 저장
     FILE *fp;
     fp = fopen("userHistory.txt", "w");
     for(int i=0; i<30; i++){
