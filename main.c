@@ -17,7 +17,7 @@ int main(void){
         menu = selectMenu();
         if (menu == 0) break; // 0: 종료
         if (menu == 1){ // 1: 사용자 계정 생성
-            cnt += addUser(&ulist[index]);
+            cnt += addUser(&ulist[index],ulist);
             index++;
         }
         else if (menu == 2){ // 2: 입퇴실 신청 
