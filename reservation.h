@@ -17,7 +17,7 @@ void checkinout(User *u);  // 입퇴실 처리
 int selectNo(User u[]); // 번호 선택 
 void listUser(User *u); // 전체 목록 출력
 void searchUsing(User *u, int cnt); // 사용중인 자리 조회
-void searchEmpty(User *u, int cnt); // 빈 자리 검색
+void searchEmpty(User *u, int cnt); // 빈 자리 조회
 int selectMenu(); // 메뉴 선택
 void saveFile(User *u); // 파일 저장
 int checkSeat(User u[], int select); //자리 상태 확인
