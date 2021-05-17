@@ -31,28 +31,26 @@ void checkinout(User *u){  //입퇴실 처리
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     
-    while(1){
-        printf("Please enter 1(In) or 2(Out): ");
-        scanf("%d", &answer);
+    printf("Please enter 1(In) or 2(Out): ");
+    scanf("%d", &answer);
     
-        if (answer == 1){
-            checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-            u->in = checkin;
-            break;
-        }
-        else if (answer == 2){
-            if(u->in == 0) {
-                printf("You can't check out without check in\nCheck in First!\n\n");
-            }
-            else{
-            checkout=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-            u->out = checkout;
-            }
+    if (answer == 1){
+        checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+        u->in = checkin;
+        printf("=> Check in succeeded!\n");
+    }
+    else if (answer == 2){
+        if(u->in == 0){
+            printf("=> Please check in first.\n");
         }
         else{
-            printf("=> Cancelled!\n");
-            break;
+            checkout=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+            u->out = checkout;
+            printf("=> Check out succeeded!\n");
         }
+    }
+    else{
+        printf("=> Cancelled!\n");
     }
 }
 void listUser(User *u){ // 전체 목록 출력
@@ -129,7 +127,7 @@ void updateSeat(User *u, User *U){
         }
     }
     printf("------------------Updated!-----------------\n");
-    printf("%s's seat number is changed to \"%d\".\n", u->id, u->seat);
+    printf("%s's seat number is changed to \"%d\"\n.", u->id, u->seat);
 }
 
 void usingTime(User u){
