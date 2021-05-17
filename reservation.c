@@ -99,14 +99,14 @@ int addUser(User *u, User *U){
     while(!(0< u->seat && u->seat <=30)){ //확인 함수 짬뽕
         if(!(0< u->seat && u->seat <=30)){
             printf("Invalid seat. Try again\n");
-            printf("Choose your seat(1-20): " );
+            printf("Choose your seat(1-30): " );
             scanf("%d", &u->seat);
         }
     }
     while(checkSeat(U, u->seat)==0){  //여기서도 입력 범위 확인후 
         if(checkSeat(U, u->seat)==0){
             printf("Someone is using the seat number %d.\nChoose again\n\n", u->seat);
-            printf("Choose your seat(1-20): " );
+            printf("Choose your seat(1-30): " );
             scanf("%d", &u->seat);
         }
     }
