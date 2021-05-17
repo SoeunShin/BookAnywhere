@@ -129,7 +129,7 @@ void updateSeat(User *u, User *U){
         }
     }
     printf("------------------Updated!-----------------\n");
-    printf("%s's seat number is changed to \"%d\"\n.", u->id, u->seat);
+    printf("%s's seat number is changed to \"%d\".\n", u->id, u->seat);
 }
 
 void usingTime(User u){
