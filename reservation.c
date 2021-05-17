@@ -236,7 +236,7 @@ void saveFile(User *u){ // 파일 저장
     FILE *fp;
     fp = fopen("userHistory.txt", "w");
     for(int i=0; i<30; i++){
-        fprintf("\t%s\t\t%d\t\t%d\t\t%d\n", u[i].id, u[i].in, u[i].out, u[i].seat);
+        fprintf(fp, "\t%s\t\t%d\t\t%d\t\t%d\n", u[i].id, u[i].in, u[i].out, u[i].seat);
     }
     fclose(fp);
     printf("=> Saved!\n");
