@@ -86,11 +86,11 @@ int addUser(User *u, User *U){
     printf("Input a user ID: ");
     scanf("%s", u->id);
     //searchEmpty함수 호출하여 빈자리 목록 or 수동으로 목록조회하게
-    printf("Choose your seat(1-20): " );
+    printf("Choose your seat(1-30): " );
     scanf("%d", &u->seat);
 
-    while(!(0< u->seat && u->seat <=20)){ //확인 함수 짬뽕
-        if(!(0< u->seat && u->seat <=20)){
+    while(!(0< u->seat && u->seat <=30)){ //확인 함수 짬뽕
+        if(!(0< u->seat && u->seat <=30)){
             printf("Invalid seat. Try again\n");
             printf("Choose your seat(1-20): " );
             scanf("%d", &u->seat);
@@ -109,13 +109,13 @@ int addUser(User *u, User *U){
 }
 
 void updateSeat(User *u, User *U){
-    printf("Choose your seat(1-20): " );
+    printf("Choose your seat(1-30): " );
     scanf("%d", &u->seat);
 
     while(checkSeat(U, u->seat)==0){
         if(checkSeat(U, u->seat)==0){
             printf("Someone is using the seat number %d.\nChoose again\n\n", u->seat);
-            printf("Choose your seat(1-20): " );
+            printf("Choose your seat(1-30): " );
             scanf("%d", &u->seat);
         }
     }
