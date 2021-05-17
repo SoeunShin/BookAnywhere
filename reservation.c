@@ -125,10 +125,49 @@ void usingTime(User u){
 void readHistory(User u); // file에 저장된 히스토리 읽기
 void searchUser(User *u); // 사용자 검색
 void searchUsing(User *u, int cnt){ // 사용중인 자리 검색
-    
+    int ucnt = 0;
+    int useat;
+
+    printf("This is a list of seats in use.\n");
+    printf("\nNo\tID\t\tCheck in\tCheck out\tSeat No\n");
+    printf("****************************************************************\n");
+    for(int i=0; i<cnt; i++){
+        if(u[i].seat == 0) continue;
+        else{
+            printf("%d", i+1);
+            readProduct(u[i]);
+            ucnt++;
+        }
+    }
+    if(ucnt==0)
+        printf("=> All seats are empty!\n");
 }
 void searchEmpty(User *u, int cnt){ // 비어있는 자리 검색
-    
+    int ucnt = 0;
+    int useat;
+    int usingseat[cnt];
+    int emptyseat[30-cnt];
+    // 사용중인 자리 배열
+    for(int i=0; i<cnt; i++){
+        usingseat[i] = u[i].seat;
+    }
+    // 빈 자리 배열
+    for(int i=1; i<=30; i++){
+        for(int j=0; j<cnt; j++){
+            if(i != usingseat[j]){
+                emptyseat[j] = i;
+                ucnt++;
+            }
+        }
+    }
+    // 빈 자리 출력
+    printf("This is a list of empty seats.\n");
+    for(int i=0; i<num(emptyseat); i++){
+        printf("%d\n", emptyseat[i]);
+    }
+    if(ucnt==0){
+        printf("=> There are no seats available.\n");
+    }
 }
 void saveFile(User *u, int cnt){ // 파일 저장
     
