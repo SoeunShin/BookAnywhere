@@ -110,10 +110,19 @@ int addUser(User *u){
     return 1;
 }
 
-void updateSeat(User *u){
+void updateSeat(User *u, User *U){
     printf("Choose your seat(1-20): " );
     scanf("%d", &u->seat);
-    printf("=> Updated!\n");
+
+    while(checkSeat(U, u->seat)==0){
+        if(checkSeat(U, u->seat)==0){
+            printf("Someone is using the seat number %d.\nChoose again\n\n", u->seat);
+            printf("Choose your seat(1-20): " );
+            scanf("%d", &u->seat);
+        }
+    }
+    printf("------------------Updated!-----------------\n");
+    printf("%s's seat number is changed to \"%d\"\n.", u->id, u->seat);
 }
 
 void usingTime(User u){
