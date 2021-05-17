@@ -81,7 +81,7 @@ int selectMenu(){
     return menu;
 }
 
-int addUser(User *u){
+int addUser(User *u, User *U){
     int ck=0, i;
     printf("Input a user ID: ");
     scanf("%s", u->id);
