@@ -112,7 +112,6 @@ int addUser(User *u, User *U){
             if(strcmp((ptr+i)->id, name)==0){
                 printf("->Same id exit.\nPlease use other id\n");
                 ck++;
-                break;
             }
             else continue;
         } 
