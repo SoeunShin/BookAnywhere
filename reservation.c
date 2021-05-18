@@ -36,10 +36,16 @@ void checkinout(User *u){  //입퇴실 처리
         scanf("%d", &answer);
 
         if (answer == 1){
-            checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-            u->in = checkin;
-            printf("=> Check in succeeded!\n");
-            break;
+            if(u->in != 0){
+                printf("=> You already checked in.\n");
+                printf("=> Please check out first.\n");
+            }
+            else {
+                checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+                u->in = checkin;
+                printf("=> Check in succeeded!\n");
+                break;
+            }
         }
         else if (answer == 2){
             if(u->in == 0){
