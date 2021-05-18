@@ -41,7 +41,7 @@ int main(void){
             printf("Do you want to delete it?(Yes: 1) ");
             scanf("%d", &delok);
             if (delok == 1){
-                deleteUser(&ulist[no-1]);
+                cnt -= deleteUser(&ulist[no-1]);
                 printf("=> Deleted!\n");
             }
             else{
