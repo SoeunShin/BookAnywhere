@@ -100,31 +100,28 @@ int selectMenu(){
     return menu;
 }
 
-int addUser(User *u, User *U){
+int addUser(User *u, User *U){  
     int ck=0, i;
     char name[20];
     User* ptr= U;
-    printf("ptr points to: %s\n",ptr->id);
     while(1){
         ck=0;
         printf("Input a user ID: ");
         scanf("%s", name);
         for(i=0; i<30; i++ ){  //사이즈 유동적으로 sizeof(ptr)/sizeof(ptr[]) 
-            printf("IN LOOP    ptr points to: %s\n",ptr->id);
             if(strcmp((ptr+i)->id, name)==0){
                 printf("->Same id exit.\nPlease use other id\n");
                 ck++;
                 break;
             }
             else continue;
-            printf("ck: %d\n", ck);
         } 
         if(ck==0) break;
     }
     strcpy(u->id, name);
 
     
-    while(1){
+    while(1){  //만들어진 자리 번호 이외 입력받았을 때 처리
         printf("Choose your seat(1-30): " );
         scanf("%d", &u->seat); 
         if(!(0< u->seat && u->seat <=30)){
@@ -132,7 +129,7 @@ int addUser(User *u, User *U){
         }
         else break;
     }
-    while(1){  
+    while(1){   //사용중 자리 확인
         if(checkSeat(U, u->seat)==0){
             printf("->Someone is using the seat number %d.\nChoose again\n\n", u->seat);
             printf("Choose your seat(1-30): " );
