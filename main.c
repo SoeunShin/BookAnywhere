@@ -12,6 +12,18 @@ int main(void){
         ulist[i].out = 0;
         ulist[i].seat = 0;
     }
+    
+    FILE *fp;
+    fp = fopen("userHistory.txt", "rt");
+
+    if (fp == NULL){
+        printf("\n=> No file\n");
+    }
+    else {
+        printf("\n=> Loading succeeded!\n");
+        cnt = loadData(ulist);
+        index = cnt;
+    }
 
     while(1){
         menu = selectMenu();
