@@ -87,7 +87,10 @@ int main(void){
         else if (menu == 10){ // 10. 파일 저장 
             saveFile(ulist);
         }
+        else {
+            printf("->select a correct menu.\n");
+            break;
+        }
     }
     printf("=> EXIT\n");
     return 0;
-}
