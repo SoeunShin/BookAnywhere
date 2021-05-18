@@ -31,28 +31,34 @@ void checkinout(User *u){  //입퇴실 처리
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     
-    printf("Please enter 1(In) or 2(Out): ");
-    scanf("%d", &answer);
-    
-    if (answer == 1){
-        checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-        u->in = checkin;
-        printf("=> Check in succeeded!\n");
-    }
-    else if (answer == 2){
-        if(u->in == 0){
-            printf("=> Please check in first.\n");
+    while(1){
+        printf("Please enter 1(In) or 2(Out): ");
+        scanf("%d", &answer);
+
+        if (answer == 1){
+            checkin=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+            u->in = checkin;
+            printf("=> Check in succeeded!\n");
+            break;
+        }
+        else if (answer == 2){
+            if(u->in == 0){
+                printf("=> Please check in first.\n");
+            }
+            else{
+                checkout=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
+                u->out = checkout;
+                printf("=> Check out succeeded!\n");
+                break;
+            }
         }
         else{
-            checkout=(tm.tm_hour)*3600 + (tm.tm_min)*60 + tm.tm_sec;
-            u->out = checkout;
-            printf("=> Check out succeeded!\n");
+            printf("=> Cancelled!\n");
+            break;
         }
     }
-    else{
-        printf("=> Cancelled!\n");
-    }
 }
+
 void listUser(User *u){ // 전체 목록 출력
     printf("\nNo\tID\t\tCheck in\tCheck out\tSeat No\n");
     printf("****************************************************************\n");
