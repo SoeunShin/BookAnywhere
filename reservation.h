@@ -21,3 +21,4 @@ void searchEmpty(User *u, int cnt); // 빈 자리 조회
 int selectMenu(); // 메뉴 선택
 void saveFile(User *u); // 파일 저장
 int checkSeat(User u[], int select); //자리 상태 확인
+int loadData(User *u); // 파일에 있는 내용을 불러오는 함수
