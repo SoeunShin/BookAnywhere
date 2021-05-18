@@ -249,7 +249,6 @@ void searchEmpty(User *u, int cnt){ // 빈 자리 조회
     int emptyseat[30-cnt];
     int usingseat[cnt];
     printf("\nNumber of empty seats: %d\n", 30-cnt);
-    // 빈 자리 출력
     printf("->This is a list of empty seats.\n");
     int k = 0, flag = 0;
     for(int i=0; i<30; i++){
