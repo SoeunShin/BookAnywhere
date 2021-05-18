@@ -276,3 +276,12 @@ void saveFile(User *u){ // 파일 저장
     fclose(fp);
     printf("-> Saved!\n");
 }
+int loadData(User *u){
+    int i = 0;
+    FILE *fp = fopen("userHistory.txt", "r");
+    while(fscanf(fp, "%s\t\t%d\t\t%d\t\t%d\n", u[i].id, &u[i].in , &u[i].out, &u[i].seat)!=EOF){
+        i++;
+    } 
+    fclose(fp);
+    return i;
+}
